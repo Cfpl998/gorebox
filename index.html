@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GORE BOX</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+.bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  
+  background-image: url("https://i.ibb.co/pvVZRwRt/2026032418502695.png"); 
+  
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  opacity: 1.0;
+  z-index: -2;
+}
+
+
+  body {
+    font-family: "Arial Black", "PingFang SC", sans-serif;
+    background-color: #D40000;
+    color: #000;
+    overflow-x: hidden;
+    overscroll-behavior: none; 
+  }
+
+  .title {
+    font-size: clamp(70px, 16vw, 120px); 
+    font-weight: 900;
+    text-align: center;
+    margin: 20px 0 15px;
+    letter-spacing: 10px; 
+    text-shadow: 
+      4px 4px 0 #000, 
+      0 0 20px #ff3333; 
+    color: #fff; 
+    -webkit-text-stroke: 1px #000; 
+  }
+
+
+  .scroll-container {
+    width: 85%;
+    max-width: 750px;
+    height: auto;
+    max-height: 650px; 
+    margin: 0 auto;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    transform: translateZ(0);
+    will-change: scroll-position;
+    padding: 10px 0;
+  }
+  .scroll-container::-webkit-scrollbar { display: none; }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; 
+    transform: translate3d(0,0,0); 
+  }
+
+  .gore-btn {
+    width: 80%;
+    max-width: 600px;
+    padding: 22px 15px;
+    border-radius: 14px; 
+    background: #7A0000; 
+    border: 3px solid #FFD700; 
+    color: #000;
+    font-size: clamp(22px, 5vw, 28px);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.05s ease, 
+                background-color 0.2s ease,
+                border-color 0.2s ease;
+    will-change: transform;
+    transform: translateZ(0);
+    box-shadow: 0 6px 15px #0005, inset 0 -4px 10px #500000;
+  }
+
+  .gore-btn:hover {
+    background: #8F0000;
+    border-color: #FF3333; 
+    transform: translateZ(0) translateY(-3px); 
+    box-shadow: 0 10px 20px #0006;
+  }
+
+  .gore-btn:active {
+    transform: translateZ(0) translateY(0); 
+  }
+
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+
+<div class="title">GORE BOX</div>
+
+
+<div class="scroll-container" id="scrollContainer">
+  <div class="btn-group" id="btnGroup">
+
+    <div class="gore-btn" data-link="https://xxx1.com">Info</div>
+    <div class="gore-btn" data-link="https://xxx2.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://xxx3.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://xxx4.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://xxx5.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://xxx6.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://xxx7.com">网站核查中</div>
+
+  </div>
+</div>
+
+
+
+<script>
+document.querySelectorAll(".gore-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const url = btn.dataset.link;
+        if(!url) return;
+        navigator.clipboard.writeText(url).then(() => {
+            btn.textContent = "✅ 已复制";
+            setTimeout(()=> btn.textContent = btn.dataset.text || btn.textContent, 600);
+        });
+        
+        setTimeout(()=> window.open(url, "_blank"), 150);
+        btn.dataset.text = btn.textContent;
+    });
+});
+
+
+</script>
+
+
+</body>
+</html>
