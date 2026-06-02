@@ -123,28 +123,16 @@
     <div class="gore-btn" data-link="https://watchpeoplesie.tv">WPD</div>
     <div class="gore-btn" data-link="https://BestGore.fun">BestGore</div>
     <div class="gore-btn" data-link="https://i.ibb.co/KCbH8cT/2026053116450611.jpg">⚠️Into the dark web</div>
-    <div class="gore-btn" data-link="https://xxx6.com">网站核查中</div>
-    <div class="gore-btn" data-link="https://xxx7.com">网站核查中</div>
+    <div class="gore-btn" data-link="https://theYnc.com">Ync</div>
+    <div class="gore-btn" data-link="https://seegore.com">seegore</div>
+    <div class="gore-btn" data-link="https://goresee.com">goresee</div>
 
   </div>
 </div>
 
 
 
-<script>
-document.querySelectorAll(".gore-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const url = btn.dataset.link;
-        if(!url) return;
-        navigator.clipboard.writeText(url).then(() => {
-            btn.textContent = "✅ 已复制";
-            setTimeout(()=> btn.textContent = btn.dataset.text || btn.textContent, 600);
-        });
-        
-        setTimeout(()=> window.open(url, "_blank"), 150);
-        btn.dataset.text = btn.textContent;
-    });
-});
+
 
 
 </script>
