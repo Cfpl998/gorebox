@@ -130,21 +130,24 @@
   </div>
 </div>
 
-<script>
 document.querySelectorAll(".gore-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const url = btn.dataset.link;
-        if(!url) return;
-        navigator.clipboard.writeText(url).then(() => {
-            btn.textContent = "✅ 已复制";
-            setTimeout(()=> btn.textContent = btn.dataset.text || btn.textContent, 600);
-        });
-        
-        setTimeout(()=> window.open(url, "_blank"), 150);
-        btn.dataset.text = btn.textContent;
+        if (!url) return;
+
+        const originalText = btn.textContent;
+
+        btn.textContent = "Loading...";
+
+        setTimeout(() => {
+            window.open(url, "_blank");
+        }, 150);
+
+        setTimeout(() => {
+            btn.textContent = originalText;
+        }, 600);
     });
 });
-
 
 
 
