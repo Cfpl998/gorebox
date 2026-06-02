@@ -130,13 +130,12 @@
   </div>
 </div>
 
-document.querySelectorAll(".gore-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const url = btn.dataset.link;
-        if (!url) return;
-        setTimeout(() => window.open(url, "_blank"), 150);
-    });
-});
+document.querySelectorAll('.gore-btn').forEach(function(btn) {
+    btn.onclick = function() {
+        var url = this.dataset.link;
+        if(url) window.open(url,'_blank');
+    }
+})
 
 
 
